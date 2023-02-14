@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-harness
+spec:
+  replicas: {{int .Values.replicas}}
+  selector:
+    matchLabels:
+      app: hello-harness
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: hello-harness
+    spec:
+      containers:
+      - image: helloharness:latest
+        name: "hello-harness"
+        ports:
+        - containerPort: 12345
