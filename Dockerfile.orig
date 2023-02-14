@@ -1,4 +1,4 @@
-FROM golang:alpine 
+FROM golang:alpine as builder
 
 RUN apk update && apk add ca-certificates openssl git
 
@@ -14,9 +14,13 @@ RUN update-ca-certificates
 RUN mkdir /build 
 ADD . /build/
 WORKDIR /build 
+ARG GOARCH
+RUN echo " XXX ----- XXX" && echo "GOARCH : ${GOARCH}"
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -a -installsuffix cgo -ldflags '-s -w -extldflags "-static"' -buildvcs=false -o hello-harness .
-RUN mkdir /app
-RUN cp /build/hello-harness /app && cp /build/.env.dev /app
+RUN find /build
+FROM scratch
+COPY --from=builder /build/hello-harness /app/
+COPY --from=builder /build/.env.dev /app/
 WORKDIR /app
 ENV HELLO_HARNESS_ENV=dev
 CMD ["./hello-harness"]
