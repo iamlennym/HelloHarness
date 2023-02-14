@@ -1,1 +1,1 @@
-docker run --rm -p 7000:7000 solar-chain 
+docker run --rm -p 12345:12345 hello-harness
