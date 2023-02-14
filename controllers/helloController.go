@@ -7,10 +7,10 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-var keyword = "123477-hello-123-XX-123"
+var keyword = "hello-123"
 
 func SayHello(c *fiber.Ctx) error {
-	str := fmt.Sprintf("Hello from 'HELLO HARNESS API Service with number : [%s]'...", keyword)
+	str := fmt.Sprintf("Hello from 'HELLO HARNESS API Service with keyword : [%s]'...", keyword)
 	println(color.Ize(color.Yellow, str))
 	return c.JSON(str)
 }
