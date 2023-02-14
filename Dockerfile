@@ -11,10 +11,10 @@ RUN openssl s_client -showcerts -connect proxy.golang.org:443 </dev/null 2>/dev/
 # Update certificates
 RUN update-ca-certificates
 
-RUN mkdir /build 
+RUN mkdir -p /build/go
 ADD . /build/
 WORKDIR /build 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -a -installsuffix cgo -ldflags '-s -w -extldflags "-static"' -buildvcs=false -o hello-harness .
+RUN GOPATH=/build/go CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -a -installsuffix cgo -ldflags '-s -w -extldflags "-static"' -buildvcs=false -o hello-harness .
 RUN mkdir /app
 RUN cp /build/hello-harness /app && cp /build/.env.dev /app
 WORKDIR /app
