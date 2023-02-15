@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/TwiN/go-color v1.4.0
 	github.com/gofiber/fiber/v2 v2.42.0
+	github.com/ipfs/go-bitfield v1.0.0
 	github.com/joho/godotenv v1.5.1
 )
 
