@@ -15,7 +15,7 @@ spec:
         app: hello-harness
     spec:
       containers:
-      - image: harnessdemo.azurecr.io/helloharness
+      - image: harnessdemo.azurecr.io/helloharness:{{int .pipeline.sequenceId}}
         name: "hello-harness"
         ports:
         - containerPort: 12345
