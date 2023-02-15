@@ -17,7 +17,6 @@ WORKDIR /build
 ARG GOARCH
 RUN echo " XXX ----- XXX" && echo "GOARCH : ${GOARCH}"
 RUN GOPATH=/build/go CGO_ENABLED=0 GOOS=linux GOARCH=${GOARCH} go build -a -installsuffix cgo -ldflags '-s -w -extldflags "-static"' -buildvcs=false -o hello-harness .
-RUN find /build
 FROM scratch
 COPY --from=builder /build/hello-harness /app/
 COPY --from=builder /build/.env.dev /app/
