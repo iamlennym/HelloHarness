@@ -15,7 +15,7 @@ spec:
         app: hello-harness
     spec:
       containers:
-      - image: dockerhub.com/iamlennym/hello-harness:{{int .Values.imageTag}}
+      - image: iamlennym/hello-harness:{{int .Values.imageTag}}
         name: "hello-harness"
         ports:
         - containerPort: 12345
