@@ -2,11 +2,10 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: HelloHarness
-  description: A description of your service
-  tags:
-    - java
-    - spring
+  description: A small application used for Harness CI/CD demonstrations.
+    - go
+    - fiber
 spec:
   type: service
-  lifecycle: production
+  lifecycle: development
   owner: iamlennym
