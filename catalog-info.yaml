@@ -7,8 +7,16 @@ metadata:
     - fiber
   annotations:
     backstage.io/techdocs-ref: dir:./docs
+  links:
+    - url: http://localhost:7080/
+      title: Test URL
+      icon: dashboard
+      type: Hello Harness Server
 spec:
   type: service
   lifecycle: development
   owner: iamlennym
+  system: Demo Apps
+  providesApis:
+    - helloHarness
   
