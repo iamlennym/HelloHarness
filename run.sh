@@ -1,1 +1,1 @@
-docker run --rm -p 12345:12345 hello-harness
+docker run --rm -p 7080:8080 hello-harness
