@@ -15,7 +15,7 @@ spec:
         app: hello-harness
     spec:
       containers:
-      - image: iamlennym/hello-harness:{{int .Values.imageTag}}
+      - image: iamlennym/basic-hello-world:{{int .Values.imageTag}}
         name: "hello-harness"
         ports:
         - containerPort: 12345
